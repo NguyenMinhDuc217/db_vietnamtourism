@@ -1,7 +1,7 @@
 <?php
 $id=$_GET["id"];
 require('../db.php');
-$ds = $conn->prepare("SELECT * FROM dia_danh,loai_dia_danh WHERE loai_dia_danh_id=$id AND loai_dia_danh_id=loai_dia_danh.id");
+$ds = $conn->prepare("SELECT * FROM tai_khoan WHERE id=$id");
 $ds->execute();
 $ds->setFetchMode(PDO::FETCH_ASSOC);
 $result = $ds->fetchAll();
