@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1:3306
--- Thời gian đã tạo: Th2 16, 2022 lúc 12:55 PM
+-- Thời gian đã tạo: Th2 19, 2022 lúc 03:56 AM
 -- Phiên bản máy phục vụ: 5.7.36
 -- Phiên bản PHP: 7.4.26
 
@@ -35,30 +35,31 @@ CREATE TABLE IF NOT EXISTS `bai_viet` (
   `cam_nghi` varchar(255) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `danh_gia` varchar(255) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `hinh_anh` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `ngay_tao` date DEFAULT NULL,
   `so_luong_view` varchar(255) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `so_luong_like` varchar(255) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `so_luong_unlike` varchar(255) COLLATE utf8mb4_vietnamese_ci NOT NULL,
-  `thoi_gian` varchar(255) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_tai_khoan_id` (`tai_khoan_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `bai_viet`
 --
 
-INSERT INTO `bai_viet` (`id`, `tai_khoan_id`, `dia_danh_id`, `cam_nghi`, `danh_gia`, `hinh_anh`, `so_luong_view`, `so_luong_like`, `so_luong_unlike`, `thoi_gian`) VALUES
-(1, 2, '1', 'Noi phat com Cho !!!! Khong co bo di cay lam :((', '4.0', NULL, '10', '13', '1', '12/12/2019'),
-(2, 2, '3', 'Dep', '3.5', NULL, '5', '7', '1', '12/2/2020'),
-(3, 22, '1', 'Di voi nguoi yeu se tuyet hon la di voi bon ban cua toi', '4', NULL, '8', '7', '1', '21/3/2020'),
-(4, 23, '1', 'Da tung toi day va rat hai long', '4.5', NULL, '10', '4', '1', '29/11/2021'),
-(5, 23, '3', 'Da o day rat dep', '3', NULL, '9', '6', '1', '20/4/2019'),
-(6, 2, '2', 'Mot dia danh rat dang trai nghiem it nhat 1 lan trong doi', '3.5', NULL, '12', '13', '2', '9/10/2018'),
-(7, 21, '5', 'Dep,ngon', '3', NULL, '0', '0', '0', '13/02/2022'),
-(8, 2, '10', 'dep lam nha', '4.0', NULL, '15', '10', '4', '13/02/2022'),
-(9, 24, '1', 'CHIA SE MOI\n', '1.0', NULL, '2', '1', '0', '14/02/2022'),
-(10, 24, '3', 'Thac dep qua', '4.0', NULL, '1', '1', '0', '15/02/2022'),
-(11, 25, '4', 'CHia se', '4.5', NULL, '0', '0', '0', '15/02/2022');
+INSERT INTO `bai_viet` (`id`, `tai_khoan_id`, `dia_danh_id`, `cam_nghi`, `danh_gia`, `hinh_anh`, `ngay_tao`, `so_luong_view`, `so_luong_like`, `so_luong_unlike`) VALUES
+(1, 2, '1', 'Noi phat com Cho !!!! Khong co bo di cay lam :((', '4.0', NULL, '2019-12-12', '10', '12', '2'),
+(2, 2, '3', 'Dep', '3.5', NULL, '2020-02-12', '5', '7', '1'),
+(3, 22, '1', 'Di voi nguoi yeu se tuyet hon la di voi bon ban cua toi', '4', NULL, '2020-03-21', '8', '7', '1'),
+(4, 23, '1', 'Da tung toi day va rat hai long', '4.5', NULL, '2021-11-29', '10', '4', '1'),
+(5, 23, '3', 'Da o day rat dep', '3', NULL, '2019-04-20', '9', '6', '1'),
+(6, 2, '2', 'Mot dia danh rat dang trai nghiem it nhat 1 lan trong doi', '3.5', NULL, '2018-10-09', '12', '13', '2'),
+(7, 21, '5', 'Dep,ngon', '3', NULL, '2022-02-13', '0', '0', '0'),
+(8, 2, '10', 'dep lam nha', '4.0', NULL, '2022-02-14', '15', '10', '4'),
+(9, 24, '1', 'CHIA SE MOI\n', '1.0', NULL, '2022-02-14', '5', '1', '0'),
+(10, 24, '3', 'Thac dep qua', '4.0', NULL, '2022-02-15', '4', '2', '0'),
+(11, 25, '4', 'CHia se', '4.5', NULL, '2022-02-15', '2', '1', '0'),
+(12, 21, '2', 'Ham o day dep qua\nHam hoi toi ti !!!!!', '4.0', NULL, '2022-02-16', '2', '1', '0');
 
 -- --------------------------------------------------------
 
@@ -254,7 +255,7 @@ CREATE TABLE IF NOT EXISTS `tuong_tac` (
   PRIMARY KEY (`id`),
   KEY `FK_tai_khoan_id` (`tai_khoan_id`),
   KEY `FK_bai_viet_id` (`bai_viet_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=66 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tuong_tac`
@@ -280,9 +281,12 @@ INSERT INTO `tuong_tac` (`id`, `tai_khoan_id`, `bai_viet_id`, `trang_thai_like`)
 (24, 23, 8, '2'),
 (32, 7, 1, '2'),
 (50, 24, 1, '1'),
-(44, 2, 1, '1'),
+(44, 2, 1, '2'),
 (45, 2, 4, '1'),
-(55, 24, 10, '1');
+(55, 24, 10, '1'),
+(61, 2, 12, '1'),
+(62, 2, 10, '1'),
+(63, 2, 11, '1');
 
 -- --------------------------------------------------------
 
